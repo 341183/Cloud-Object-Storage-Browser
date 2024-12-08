@@ -1,0 +1,119 @@
+/* 设置全局默认样式 */
+* {
+    /* 背景色 */
+    background-color: #f5f5f5;
+    /* 默认字体 */
+    font-family: "微软雅黑", sans-serif;
+    font-size: 11pt;
+    color: #444444;
+}
+
+/* 设置标题样式 */
+*[style="h1"] {
+    font: bold 26pt "微软雅黑";
+    color: #2c3e50;
+}
+
+*[style="h2"] {
+    font: bold 22pt "微软雅黑";
+    color: #34495e;
+}
+
+*[style="h3"] {
+    font: bold 20pt "微软雅黑";
+    color: #7f8c8d;
+}
+
+*[style="h4"] {
+    font: bold 18pt "微软雅黑";
+    color: #95a5a6;
+}
+
+*[style="h5"] {
+    font: bold 16pt "微软雅黑";
+    color: #bdc3c7;
+}
+
+/* 设置 QLineEdit 样式 */
+QLineEdit {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    selection-background-color: #d0e6f2;
+    height: 30px;
+}
+
+QLineEdit:hover {
+    border-color: #3498db;
+}
+
+QLineEdit:focus {
+    border-color: #2980b9;
+}
+
+/* 设置 QLabel 样式 */
+QLabel {
+    /*background-color: transparent;*/
+    color: #555555;
+}
+
+QLabel#label_logo {
+    min-width: 32px;
+    min-height: 32px;
+    border-image: url(":/static/imgs/CrossFire.ico");
+    /*background-color: transparent;*/
+}
+
+/* 设置 QPushButton 样式 */
+QPushButton {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    height: 32px;
+    width: 100px;
+    font: bold 12pt "微软雅黑";
+    padding: 0 10px;
+    text-align: center;
+}
+
+QPushButton:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    border-color: #2980b9;
+}
+
+QPushButton:pressed {
+    background-color: #2980b9;
+    color: #ffffff;
+    border-color: #1c3f66;
+}
+
+/* 特定按钮样式 */
+QPushButton#btn_login {
+    background-color: #2ecc71;
+    color: white;
+    font: bold 12pt "微软雅黑";
+}
+
+QPushButton#btn_login:hover {
+    background-color: #27ae60;
+}
+
+QPushButton#btn_close {
+    background-color: #e74c3c;
+    color: white;
+}
+
+QPushButton#btn_close:hover {
+    background-color: #c0392b;
+    color: white;
+}
+
+/* 样式重设 */
+QPushButton[disabled="true"] {
+    background-color: #ecf0f1;
+    border-color: #bdc3c7;
+    color: #bdc3c7;
+}
+
