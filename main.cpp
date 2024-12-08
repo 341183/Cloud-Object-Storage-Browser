@@ -1,4 +1,5 @@
 #include "qdir.h"
+#include "src/bend/man/mandb.h"
 #include "src/fend/uimain/uimain.h"
 
 #include <QApplication>
@@ -41,6 +42,7 @@ int main(int argc, char *argv[])
     //记录当前样式表id
     bool stylest = true;
 
+    MDB->init();
     UiMain w;
     //显示登录界面
     //w.showLoginDialog();
@@ -54,6 +56,8 @@ int main(int argc, char *argv[])
     });
 
     MB->setBuckets();
+
+
 
     //测试文件系统及QString
  //    QString rootpath = QDir::currentPath();

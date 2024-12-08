@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,6 +31,7 @@ HEADERS += \
     src/bend/man/manbuckets.h \
     src/bend/man/mandb.h \
     src/bend/models/mybucket.h \
+    src/config/config.h \
     src/fend/uicomm/breadwidget.h \
     src/fend/uicomm/mylineedit.h \
     src/fend/uicomm/pagewidget.h \
