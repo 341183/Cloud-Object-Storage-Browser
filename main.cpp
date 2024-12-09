@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
     MDB->init();
     UiMain w;
     //显示登录界面
-    //w.showLoginDialog();
-    w.show();
+    w.showLoginDialog();
+    //w.show();
 
     //绑定槽  实现切换样式表
     QAction::connect(&w,&UiMain::chanegStyle,&a,[&](){

@@ -31,6 +31,7 @@ void UiMain::showLoginDialog()
     if(m_logindialog == nullptr)
     {
         m_logindialog = new LoginDialog();
+        m_logindialog->updateLoginInfo();
         //m_logindialog->show();
         connect(m_logindialog,&LoginDialog::accepted,this,&UiMain::show);
         //connect(ui->WidgetBar,&ToolBarWidget::QuitLogin,this,&UiMain::showLoginDialog);
@@ -51,19 +52,41 @@ void UiMain::onbuttonclicked(const QString &text)
     qDebug() << text;
     if(text == "退出登录")
     {
-        showLoginDialog();
+        onUnLogin();
     }
     else if(text == "下载")
     {
-        downloadclicked();
+        onDownload();
+    }
+    else if(text == "上传")
+    {
+        onUpdate();
+    }
+    else if(text == "刷新")
+    {
+        onRefresh();
     }
 }
 
-void UiMain::downloadclicked()
+void UiMain::onUnLogin()
+{
+    showLoginDialog();
+}
+
+void UiMain::onDownload()
 {
     //下载
     QString path = QFileDialog::getSaveFileName(this,QString::fromUtf8("下载"),"./");
     qDebug() << path;
 }
 
+void UiMain::onUpdate()
+{
+    QString path = QFileDialog::getOpenFileName(this,QString::fromUtf8("上传"),"./");
+    qDebug(path.toUtf8().data());
+}
 
+void UiMain::onRefresh()
+{
+
+}

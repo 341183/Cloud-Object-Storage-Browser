@@ -9,6 +9,8 @@ public:
     DaoBuckets();
 
     QList<MyBucket> bucketsFromMock(const QString &path);
+
+
 };
 
 #endif // DAOBUCKETS_H

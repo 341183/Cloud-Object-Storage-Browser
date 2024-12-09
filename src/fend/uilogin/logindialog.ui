@@ -61,7 +61,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_name">
+       <widget class="QLabel" name="label_litle">
         <property name="text">
          <string>登录界面</string>
         </property>
@@ -129,93 +129,55 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <spacer name="verticalSpacer_13">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_yhm">
+       <widget class="QLabel" name="label_name">
         <property name="text">
-         <string>用户名</string>
+         <string>登录名</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_yhm"/>
+       <widget class="QLineEdit" name="lineEdit_name"/>
       </item>
       <item>
-       <spacer name="verticalSpacer_11">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_mm">
+       <widget class="QLabel" name="label_id">
         <property name="text">
-         <string>密码</string>
+         <string>SectetId</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_mm">
+       <widget class="QLineEdit" name="lineEdit_id"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_key">
+        <property name="text">
+         <string>SectetKey</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_key">
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_14">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+       <widget class="QLabel" name="label_remark">
+        <property name="text">
+         <string>备注</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_15">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
+       <widget class="QLineEdit" name="lineEdit_remark"/>
       </item>
       <item>
-       <spacer name="verticalSpacer_12">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+       <widget class="QCheckBox" name="checkSaveSection">
+        <property name="text">
+         <string>记住会话</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btn_login">

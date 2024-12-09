@@ -4,6 +4,8 @@
 #include <QObject>
 
 #include <src/heleper/dbsqlite.h>
+#include <src/bend/dao/daologinfo.h>
+
 #define MDB ManDb::instance()
 
 class ManDb : public QObject
@@ -12,15 +14,21 @@ class ManDb : public QObject
 public:
     explicit ManDb(QObject *parent = nullptr);
 
-     static ManDb *instance();
+    static ManDb *instance();
 
     void init();
-signals:
 
+    void saveLoginInfo(const QString &name,const QString &id,const QString &key,const QString &remark);
+    void removeLogInfo(const QString &id);
+
+    int indexOfLoginInfo(const QString &secretId);
+
+    LoginInfo loginInfoByName(const QString &name);
+
+    QStringList loginNameList();
  private:
-    void connect();
-
-    DbSqlite m_db;
+    DaoLoginfo m_daologinfo;
+    QList<LoginInfo> m_loginInfoList;
 };
 
 #endif // MANDB_H

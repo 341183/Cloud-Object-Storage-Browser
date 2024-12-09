@@ -17,6 +17,10 @@ public:
     explicit UiMain(QWidget *parent = nullptr);
     ~UiMain();
 
+    void onUnLogin();
+    void onDownload();
+    void onUpdate();
+    void onRefresh();
     void showLoginDialog();
     void onclikedchange();
 

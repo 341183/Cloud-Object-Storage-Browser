@@ -1,7 +1,9 @@
 #include "logindialog.h"
+#include "src/bend/man/mandb.h"
 #include "ui_logindialog.h"
 #include <QMouseEvent>
 #include <QMessageBox>
+#include <QCompleter>
 
 LoginDialog::LoginDialog(QWidget *parent)
     : QDialog(parent)
@@ -16,14 +18,16 @@ LoginDialog::LoginDialog(QWidget *parent)
     //ui->label_logo->setPixmap(pixmap.scaled(ui->label_logo->size()));
 
     //安装事件过滤器
-    ui->lineEdit_mm->installEventFilter(this);
+    ui->lineEdit_key->installEventFilter(this);
 
     //代码改变样式
     //ui->btn_login->setStyleSheet(QString("QPushButton{font-size : 20pt; background-color : red;}"));
 
-    ui->label_name->setProperty("style","h3");
-    ui->label_yhm->setProperty("style","h4");
-    ui->label_mm->setProperty("style","h4");
+    ui->label_litle->setProperty("style","h3");
+    ui->label_name->setProperty("style","h4");
+    ui->label_id->setProperty("style","h4");
+    ui->label_key->setProperty("style","h4");
+    ui->label_remark->setProperty("style","h4");
     ui->btn_close->setProperty("style","h4");
     ui->btn_login->setProperty("style","h4");
 
@@ -34,6 +38,23 @@ LoginDialog::LoginDialog(QWidget *parent)
 LoginDialog::~LoginDialog()
 {
     delete ui;
+}
+
+void LoginDialog::updateLoginInfo()
+{
+    QStringList words = MDB->loginNameList();;
+    qDebug() << words;
+    QCompleter *completer = new QCompleter(words);
+    ui->lineEdit_name->setCompleter(completer);
+
+    connect(completer, static_cast<void (QCompleter::*)(const QString &)>(&QCompleter::activated),this,
+            [&](const QString &name){
+                LoginInfo info = MDB->loginInfoByName(name);
+                ui->lineEdit_id->setText(info.secret_id);
+                ui->lineEdit_key->setText(info.secret_key);
+                ui->lineEdit_remark->setText(info.remark);
+                ui->checkSaveSection->setChecked(true);
+    });
 }
 
 //拖动窗口功能
@@ -61,7 +82,7 @@ void LoginDialog::mouseMoveEvent(QMouseEvent *event)
 //事件过滤器
 bool LoginDialog::eventFilter(QObject *watched, QEvent *event)
 {
-    if(watched == ui->lineEdit_mm)
+    if(watched == ui->lineEdit_key)
     {
         if(event->type() == QEvent::KeyPress)
         {
@@ -81,9 +102,24 @@ bool LoginDialog::eventFilter(QObject *watched, QEvent *event)
 
 void LoginDialog::on_btn_login_clicked()
 {
-    if(ui->lineEdit_yhm->text().trimmed() == "jnea" && ui->lineEdit_mm->text() == "341183")
+    if(ui->lineEdit_id->text().trimmed() == "jnea" && ui->lineEdit_key->text() == "341183")
     {
         accept();
+        if(ui->checkSaveSection->isChecked())
+        {
+            //保留登录信息
+            MDB->saveLoginInfo(
+                ui->lineEdit_name->text(),
+                ui->lineEdit_id->text(),
+                ui->lineEdit_key->text(),
+                ui->lineEdit_remark->text());
+        }
+        else
+        {
+            //删除登录信息
+            MDB->removeLogInfo(ui->lineEdit_id->text());
+        }
+        updateLoginInfo();
     }
     else
     {
